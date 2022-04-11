@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: calculator;
+            src: url("imgs/font/digital-7.ttf");
+        }       
+        body{
+            background-color: rgb(129, 129, 129);
+        }
+        .kockice{
+            position: relative;
+            width: 140px;
+            height: 100px;
+            border: 1px solid black;
+            display: inline-block;
+            font-size: 40px;
+            text-align: center;
+            padding-top: 40px;
+            overflow: hidden;
+            margin-right: 3px;
+            animation-name: a;
+            animation-duration: 0.2s;
+            animation-iteration-count: 1;
+            border-radius: 60px;
+            background-color: white;
+            font-weight: bolder;
+            
+        }
+        
+        #timer{
+            font-size: 50px;
+            background-color:white;
+            position: relative;
+            left: 1000px;
+            top: 340px;
+            border-radius: 15px;
+            padding: 5px;
+            font-family: calculator;
+        }
+        #bomba{
+            position: absolute;
+            left: 750px;
+            top: 500px;
+            z-index: -1;
+        
+        }
+        img.home{
+            width:50px;
+            height: 50px;
+        }
+        @keyframes good {
+            50%{
+                transform: scale(1.1,1.1);
+            }
+        }
+        @keyframes bad {
+            25%{
+                left: 3px;
+            }
+            75%{
+                right: 6px;
+            }
+            
+        }
+        #tutor{
+            background-color: rgba(255, 255, 255,0.5);
+            border-radius: 25px;
+            padding: 10px;
+            margin-right: 50%;
+            margin-bottom: 20px;
+            font-size: 30px;
+            
+        }
+        h1{
+            color: white;
+        }
+        #rezultat{
+            color: white;
+            font-size: 35px;
+
+        }
+        #dugme{
+            width:200px;
+            height: 100px;
+            font-size: 35px;
+
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Game <a href="index.html"><img class="home" src="imgs/home.png" alt=""></a></h1>
+    <div id="tutor">
+        <p>Na ekranu je matrica od 16 brojeva</p>
+        <p>Nakon pritiska na broj 1 odpocinje tajmer od 10 sekundi</p>
+        <p>Morate pritisnuti na sve brojeve u rastucem rasporedu dok vreme ne istekne. Srecno</p>
+    </div>
+    
+    
+    <div id="igrica"><div><img id="bomba" src="imgs/bomba.png" alt=""> <span id="timer">10.00</span></div>
+    </div>
+    <div id = "help">
+        <button ID="dugme" onclick="help()">POMOC</button>
+    </div>
+    
+   <p id="rezultat"></p>
+    
+    <script>
+        function create(){
+           for(i = 1; i < 17; i++)
+        {
+            
+            document.getElementById("igrica").innerHTML=document.getElementById("igrica").innerHTML+"<span id='"+i+"' class='kockice' onclick='klik(this.id)'></span>";
+            if(i%4 ==0)
+            {
+                document.getElementById("igrica").innerHTML=document.getElementById("igrica").innerHTML+"<br>";
+            }
+        } 
+        }
+        create()
+        numbers = [];
+        combination = [];
+        for(i = 1; i<17; i++)
+        {
+            numbers[i-1]=i;
+            combination[i-1]=i; 
+        }
+        len = numbers.length;
+        for(i=1;i<17;i++)
+        {
+            rand = Math.floor(Math.random()* len--);
+            document.getElementById(i).innerHTML = numbers[rand];
+            numbers.splice(rand, 1);
+
+
+
+        }
+        sec = 10.0;
+        function timerFun()
+        {
+            
+        timer = setInterval(function(){
+        if(sec <= 0){
+        clearInterval(timer);
+        document.getElementById("rezultat").innerHTML = "Nazalost, nise uspeli na vreme, vise srece sledeci put!";
+        document.getElementById("bomba").src = "imgs/explosion.png"
+        document.getElementById("timer").innerHTML = "";
+        for(i = 1; i < 17; i++)
+        {
+                document.getElementById(i).innerHTML ="";
+                document.getElementById(i).style.backgroundColor = "red";
+                document.getElementById(i).onclick = "";
+        }
+        } else {
+        document.getElementById("timer").innerHTML = sec.toFixed(2);
+         }
+        sec -= 0.01;
+        
+        }, 10);
+            
+            
+        }
+        
+
+        prov = 0;
+
+        
+        
+        function klik(x)
+        {
+            
+
+
+            if(document.getElementById(x).innerHTML == combination[0])
+                {
+                    if(prov==0)
+                    {
+                        timerFun()
+                        prov = 1;
+                    }
+                document.getElementById(x).innerHTML ="";
+                document.getElementById(x).style.backgroundColor = "green";
+                document.getElementById(x).onclick = "";
+                document.getElementById(x).style.animationName = "good";
+                combination.splice(0, 1);
+                if(combination[0] == undefined)
+                {
+                    document.getElementById("rezultat").innerHTML = "Cestitamo, pobedili ste!!! Preostalo vam je jos: " + sec.toFixed(2)+ " sekundi.";
+                    document.getElementById("timer").innerHTML = "";
+                    document.getElementById("timer").style.backgroundColor = "black";
+                    
+                    clearInterval(timer);
+                    
+
+                }
+                console.log(combination);
+            }
+            else
+            {
+                document.getElementById(x).style.animationName = "bad";
+                setInterval(() => {
+                    document.getElementById(x).style.animationName = "a";
+                }, 500);
+            }
+
+            
+        }
+        function help()
+        {
+            for(i = 1; i < 17; i++)
+            {
+                f = document.getElementById(i);
+                if(f.innerHTML == combination[0])
+                {
+                    klik(f.id);
+                    break;
+                   
+                }
+
+                
+            }
+           document.getElementById("dugme").onclick = "";
+
+                   
+        }
+        
+        
+        
+        
+    </script>
+</body>
+</html>

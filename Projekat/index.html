@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+            font-size: 65px;
+         
+            font-family:'Times New Roman', Times, serif;
+            animation-name: reklama;
+            animation-timing-function: linear;
+            animation-iteration-count: 1;
+            animation-duration: 5s;
+            text-shadow: 3px 3px 5px black;
+
+        }
+        header{
+            color: white;
+            padding: 40px;
+            background-image:linear-gradient(to right, rgb(70, 70, 102), gray);
+            
+            
+        }
+
+        @keyframes reklama{
+            0%{
+                transform: translate(-1250px, 0px);}
+            25%{
+                transform: translate(0px, 0px);}
+            40% { transform: rotate(15deg); }
+            55% { transform: rotate(-15deg);}
+            65% { transform: scale(6.3, 6.3); }
+            80% { transform: translate(0px, 150px)}
+            90% { transform: translate(0px, -300px)}
+                
+        }
+        nav{
+            text-align: right;
+            font-size: 40px;
+            padding:25px;
+            background-image:linear-gradient(to right, rgb(70, 70, 102), gray);
+            z-index: -3;
+        }
+        a{
+            color: black;
+            text-decoration: none;
+            padding: 22px;
+            background-color: white;
+            font-weight: bolder;
+            border-radius: 20px;
+        }
+        a{
+            background-color: gray;
+            color: white;
+            
+           
+        }
+        a:hover{
+            background-color: white;
+            color: gray;
+            transition: 0.3s;
+        }
+        section{
+            background-image:linear-gradient(to right, rgb(70, 70, 102), gray);
+            padding: 15px;
+            margin-top: 12px;
+            color: white;
+            border-radius: 12px;
+            text-shadow: 3px 3px 5px black;
+            font-size: 30px;
+        }
+        footer{
+            background-image:linear-gradient(to right, rgb(70, 70, 102), gray);
+            margin-top: 12px;
+            border-radius: 12px;
+            padding: 5px;
+            font-size: 15px;
+            color: white;
+        }
+        #city{
+           position: absolute;
+           left: 8px;
+           top: 159px;
+           
+        }
+        #auto{
+            width: 100px;
+            position: absolute;
+            top: 303px;
+            left: 770px;
+            animation-name: car;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            
+           
+
+        }
+        @keyframes car{
+            0%{
+                left: 600px;
+            }
+
+
+            100%{
+                left: -130px;
+            }
+
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PROJEKAT</h1>
+    </header>
+    <nav>
+        <img src="imgs/city.png" alt="" id = "city">
+        <img src="imgs/auto.png" alt="" id = "auto">
+        <a href="galery.html">Galerija</a>
+        <a href="table.html">Tabela</a>
+        <a href="game.html">Igrica</a>
+    </nav>
+    <main>
+        <section>
+        <h2>Aleksa Aleksic RT-9/19</h2>
+        <p>1 - link ka galeriji slika (kreirati galeriju sa Vašim efektom odabiranja i pregleda slika)</p>
+        <p>2 - link ka stranici koja sadrži tabelu koja ima 5 atributa (kolona) i gde se može vršiti sortiranje redova po bilo kom atributu</p>
+        <p>3 - link ka igri "Klikni za 10 sekundi na 16 brojeva u rastućem redosledu brojevi su raspoređeni slučajno kao matrica 4x4</p>
+        <article>
+            <h2>Umotvornine</h2>
+            <p id="hm" ></p>
+        </article>
+    </section>
+    </main>
+    <footer>
+        &copy 2021 Aleksa Aleksic All Rights reserved.
+    </footer>
+    <script>
+        smart = [];
+        smart[0] = "Ако будеш мост, свако ће да те гази.";
+        smart[1] = "Ако желиш изгубити пријатеља, посуди му новац .";
+        smart[2] = "Ако желиш језгро, сломи љуску.";
+        smart[3] = "Ако знаш шта ти је било, не знаш шта ће ти бити.";
+        smart[4] = "Ако је и тешко живети, опет је живот сладак.";
+        br = 1;
+        document.getElementById("hm").innerHTML = smart[0];
+        
+        
+         setInterval(function(){
+             
+             document.getElementById("hm").innerHTML = smart[br];
+             br++;
+        if(br == 5)
+             {
+                 br = 0;
+             }
+        
+        
+        
+        }, 10000);
+        
+    </script>
+    
+    
+    
+</body>
+</html>

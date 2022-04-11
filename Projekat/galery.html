@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .naslov{
+       
+            height: 150px;
+            color: rgb(216, 169, 76);
+            font-size: 45px;
+            padding-top:10px;
+            border-radius: 44px;
+        }
+        #slicice{
+            width: 40%;
+            height: 290px;
+            overflow-y: scroll;
+            display: inline-block;
+            margin-left: 40px;
+            scrollbar-color:rgb(44, 44, 44) gray;
+        }
+        
+        #slika{
+            position: absolute;
+            width: 56%;
+            height: 650px;
+            display: inline-block;
+            margin-left: 15px;
+            border-radius: 24px;
+        }
+        #lore{
+            margin-left: 40px;
+            height: 250px;
+            width: 40%;
+            
+           
+            
+        }
+        img.slicica{
+            margin: 10px;
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            transition: transform 0.6s;
+            
+        }
+        img.slicica:hover{
+            transform: scale(1.1,1.1);
+            
+        }
+        img.home{
+            width:50px;
+            height: 50px;
+            position: relative;
+            left: 100px;
+            bottom: 30px;
+        }
+        body{
+            background-color: rgb(92, 92, 92);
+        }
+        #name{
+            text-align: center;
+            color:rgb(216, 169, 76);
+            font-size: 35px;
+        }
+        #story{
+            font-size: 30px;
+            color:rgb(216, 169, 76);
+            font-style: italic;
+        }
+        .logo{
+            width: 124px;
+            height: 125px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="naslov"><img class="logo" src="imgs/lollogo.png" alt="">eague of Legends gallery<a href="index.html"><img class="home" src="imgs/home.png" alt=""></a></h1>
+    <div id="slicice">
+        <img src="imgs/Darius.png" alt="" class="slicica" id="Darius" onclick="setImg(this.id)">
+        <img src="imgs/Yasuo.png" alt="" class="slicica" id="Yasuo" onclick="setImg(this.id)">
+        <img src="imgs/Zed.png" alt="" class="slicica" id="Zed" onclick="setImg(this.id)">
+        <img src="imgs/Nasus.png" alt="" class="slicica" id="Nasus" onclick="setImg(this.id)">
+        <img src="imgs/Teemo.png" alt="" class="slicica" id="Teemo" onclick="setImg(this.id)">
+        <img src="imgs/Azir.png" alt="" class="slicica" id="Azir" onclick="setImg(this.id)">
+        <img src="imgs/Tf.png" alt="" class="slicica" id="Twisted Fate" onclick="setImg(this.id)">
+        <img src="imgs/Mordekaiser.png" alt="" class="slicica" id="Mordekaiser" onclick="setImg(this.id)">
+        <img src="imgs/Pantheon.png" alt="" class="slicica" id="Pantheon" onclick="setImg(this.id)">
+        <img src="imgs/Zoe.png" alt="" class="slicica" id="Zoe" onclick="setImg(this.id)">
+    </div>
+    
+    <img src="imgs/2379005.jpg" alt="" id="slika">
+    
+    <div id="lore">
+        <h1 id="name"></h1>
+        <p id="story"></p>
+    </div>
+    
+    <script>
+        function setImg(x)
+        {
+            document.getElementById("slika").src = "imgs/"+x+".jpg";
+            document.getElementById("name").innerHTML = x;
+
+            story = document.getElementById("story");
+            console.log(x);
+
+            if(x == "Darius"){
+                story.innerHTML = "There is no greater symbol of Noxian might than Darius, the nation's most feared and battle-hardened leader. Rising from humble origins to become the Hand of Noxus, he cleaves through the empire's enemies—many of them Noxians themselves. Knowing that he never doubts his cause is just, and never hesitates once his axe is raised, those who stand against the commander of the Trifarian Legion can expect no mercy";
+            }    
+            else if(x == "Azir"){
+                story.innerHTML = "Azir was a mortal emperor of Shurima in a far distant age, a proud man who stood at the cusp of immortality. His hubris saw him betrayed and murdered at the moment of his greatest triumph, but now, millennia later, he has been reborn as an Ascended being of immense power. With his buried city risen from the sand, Azir seeks to restore Shurima to its former glory.";
+            }
+            else if(x == "Yasuo"){
+                story.innerHTML = "As a child, Yasuo often believed what the others in his village said of him: on the best days, his very existence was an error in judgement; on the worst, he was a mistake that could never be undone."; 
+            }
+            else if(x == "Zed"){
+                story.innerHTML = "Taken in by Great Master Kusho himself, Zed found his place within the temple’s ancient walls. He dedicated himself to understanding the Kinkou’s spiritual tenets, quickly outpacing his peers both in combat and study. Even so, he felt overshadowed by another—his master’s son, Shen. Though Zed’s passion shone through in every technique he perfected, he lacked Shen’s emotional balance. In spite of this, the two pupils became like brothers."; 
+            }
+            else if(x == "Nasus"){
+                story.innerHTML = "Nasus is an imposing, jackal-headed Ascended being from ancient Shurima, a heroic figure regarded as a demigod by the people of the desert. Fiercely intelligent, he was a guardian of knowledge and peerless strategist whose wisdom guided the ancient empire of Shurima to greatness for many centuries. After the fall of the empire, he went into self-imposed exile, becoming little more than a legend. Now that the ancient city of Shurima has risen once more, he has returned, determined to ensure it never falls again."; 
+            }
+            else if(x == "Teemo"){
+                story.innerHTML = "Undeterred by even the most dangerous and threatening of obstacles, Teemo scouts the world with boundless enthusiasm and a cheerful spirit. A yordle with an unwavering sense of morality, he takes pride in following the Bandle Scout's Code, sometimes with such eagerness that he is unaware of the broader consequences of his actions. Though some say the existence of the Scouts is questionable, one thing is for certain: Teemo's conviction is nothing to be trifled with."; 
+            }
+            else if(x == "Twisted Fate"){
+                story.innerHTML = "Twisted Fate is an infamous cardsharp and swindler who has gambled and charmed his way across much of the known world, earning the enmity and admiration of the rich and foolish alike. He rarely takes things seriously, greeting each day with a mocking smile and an insouciant swagger. In every possible way, Twisted Fate always has an ace up his sleeve."; 
+            }
+            else if(x == "Mordekaiser"){
+                story.innerHTML = "Twice slain and thrice born, Mordekaiser is a brutal warlord from a foregone epoch, who uses his necromantic sorcery to bind souls into an eternity of servitude. Few now remain who remember his earlier conquests, or know the true extent of his powers—but there are some ancient souls that do, and they fear the day when he may return to claim dominion over both the living and the dead."; 
+            }
+            else if(x == "Pantheon"){
+                story.innerHTML = "Once an unwilling host to the Aspect of War, Atreus survived when the celestial power within him was slain, refusing to succumb to a blow that tore stars from the heavens. In time, he learned to embrace the power of his own mortality, and the stubborn resilience that goes along with it. Atreus now opposes the divine as Pantheon reborn, his unbreakable will fueling the fallen Aspect’s weapons on the field of battle."; 
+            }
+            else if(x == "Zoe"){
+                story.innerHTML = "As befits her Targonian Aspect’s nature, Zoe did not come to the attention of the celestial realm in any traditional way. She didn’t win a great victory against overwhelming odds, or sacrifice herself for a noble ideal, or overcome the existential trial of climbing Mount Targon. Instead, Zoe was a normal girl, seemingly chosen at random from among the Rakkor."; 
+            }
+                   
+        }
+    </script>
+</body>
+</html>
